@@ -1,0 +1,32 @@
+# Thymeleaf (1.루트폴더 변경 2.타임리프 캐시 설정)
+spring:
+  thymeleaf:
+    prefix: classpath:templates/
+    check-template-location: true
+    suffix: .html
+    mode : HTML
+    cache: false #default true 개발시에는 false로 정적 파일처럼 사용 새로고침으로 바로 반영 가능
+    
+#jdbc
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: hr
+    password: 1111
+    hikari:
+      auto-commit: false
+      connection-test-query: select 1 from dual
+      minimum-idle: 10
+      maximum-pool-size: 50
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+      pool-name: pool-tester
+      
+      
+      
+      
+ #mybatis
+mybatis:
+  mapper-locations : classpath:mapper/**/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  
